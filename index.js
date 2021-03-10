@@ -8,7 +8,7 @@ const path = require('path')
 
 const app = express();
 
-const DB_URL = 'mongodb://localhost:27017/firstDB';
+const DB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/firstDB';
 
 // let userSchema = mongoose.Schema({
 //   username: {
@@ -158,12 +158,12 @@ app.use('/auth',require('./middlewares/auth'))
 //   })
 // })
 console.log(process.env.NODE_ENV)
-if(process.env.NODE_ENV !== 'production'){
+if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
   app.use(express.static('my-appp/build'))
 
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'my-appp', 'build', 'index.html'))
+    res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
   })
 }else{
   console.log('bbbb')
