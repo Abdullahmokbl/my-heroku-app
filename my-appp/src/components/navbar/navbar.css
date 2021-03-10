@@ -1,0 +1,40 @@
+.navbar{
+  background-color: rgb(36, 36, 63);
+  color: white;
+  height: 50px;
+}
+.navbar .container{
+  display: flex;
+}
+.navbar ul{
+  list-style: none;
+  flex: 1;
+  display: flex;
+  margin: 0;
+}
+.navbar ul a{
+  color: white;
+  text-decoration: none;
+}
+.navbar ul a,
+.navbar .name{
+  padding: 15px;
+  cursor: pointer;
+}
+.navbar ul a:hover,
+.navbar .name:hover{
+  background-color: #d8d8f1;
+  color: black;
+}
+
+.navbar ul a.active{
+  background-color: white;
+  color: black;
+}
+.search{
+  background-color: #d8d8f1;
+  padding: 15px;
+  border-radius: 5%;
+  margin: 0 40px;
+  width: 300px
+}
