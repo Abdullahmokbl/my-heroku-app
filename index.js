@@ -4,6 +4,7 @@ const express = require('express');
 // const bcrypt = require('bcryptjs')
 // const jwt = require('jsonwebtoken')
 const mongoose = require('mongoose')
+const path = require('path')
 
 const app = express();
 
@@ -156,6 +157,15 @@ app.use('/auth',require('./middlewares/auth'))
 //     })
 //   })
 // })
+
+if(process.env.NODE_ENV === 'production'){
+  console.log('aaa')
+  app.use(express.static('my-appp/build'))
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'my-appp', 'build', 'index.html'))
+  })
+}
 
 const port = process.env.PORT || 5000
 
