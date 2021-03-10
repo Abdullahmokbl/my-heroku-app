@@ -165,6 +165,8 @@ if(process.env.NODE_ENV === 'production'){
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, 'my-appp', 'build', 'index.html'))
   })
+}else{
+  console.log('bbbb')
 }
 
 const port = process.env.PORT || 5000
