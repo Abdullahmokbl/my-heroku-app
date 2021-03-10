@@ -160,7 +160,7 @@ app.use('/auth',require('./middlewares/auth'))
 console.log(process.env.NODE_ENV)
 if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
-  app.use(express.static('my-appp/build'))
+  app.use(express.static(__dirname + '/my-appp/build'))
 
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
