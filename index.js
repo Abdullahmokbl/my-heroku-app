@@ -157,8 +157,8 @@ app.use('/auth',require('./middlewares/auth'))
 //     })
 //   })
 // })
-
-if(process.env.NODE_ENV === 'production'){
+console.log(process.env.NODE_ENV)
+if(process.env.NODE_ENV !== 'production'){
   console.log('aaa')
   app.use(express.static('my-appp/build'))
 
