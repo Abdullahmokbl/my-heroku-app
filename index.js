@@ -67,18 +67,18 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useC
   .then(() => console.log('connected to database'))
   .catch((err) => console.log('db', err))
 
-app.get('/', (req, res, next) => {
-  try{
-    User.find((err, users)=>{
-      console.log('us', users)
-      res.json(users)
-      // mongoose.disconnect()
-      // res.sendFile(__dirname + '\\index.html')
-    })
-  }catch(err){
-    console.log('aa', err)
-  }
-})
+// app.get('/', (req, res, next) => {
+//   try{
+//     User.find((err, users)=>{
+//       console.log('us', users)
+//       res.json(users)
+//       // mongoose.disconnect()
+//       // res.sendFile(__dirname + '\\index.html')
+//     })
+//   }catch(err){
+//     console.log('aa', err)
+//   }
+// })
 
 // app.get('/about', (req, res, next) => {
 //   // res.render('index.html')
