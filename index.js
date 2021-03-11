@@ -182,7 +182,7 @@ if(process.env.NODE_ENV === 'production'){
     app.get('*', (req, res) => {
       console.log('vvvvv')
       // res.send('aaaaaaa')
-      // res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
+      res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
     })
   }catch(err){
     console.log('rr', err)
