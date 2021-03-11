@@ -8,8 +8,8 @@ const path = require('path')
 
 const app = express();
 
-const DB_URL = 'mongodb://localhost:27017/firstDB';
-
+// const DB_URL = 'mongodb://localhost:27017/firstDB';
+const DB_URL = 'mongodb+srv://admin:admin123456@cluster0.gwtyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 // let userSchema = mongoose.Schema({
 //   username: {
 //     type: String,
