@@ -173,7 +173,7 @@ if(process.env.NODE_ENV === 'production'){
     res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
   })
 }else{
-    req.send('aaaaaaa')
+    req.send('aaaaaaasdaaa')
     console.log('bbbb')
 }
 
