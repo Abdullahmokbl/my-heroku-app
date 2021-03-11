@@ -166,7 +166,7 @@ process.on('uncaughtException', function (err) {
 
 if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
-  app.use(express.static(__dirname + '../my-appp/build'))
+  app.use(express.static(__dirname + '/my-appp/build'))
 
   app.get('*', (req, res) => {
     res.send('aaaaaaa')
