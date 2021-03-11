@@ -40,7 +40,7 @@ const Logout = ({log_out}) => {
       <h1>middle</h1>
 
       <FacebookLogin
-      appId="567306280781662"
+      appId="1620429328158710"
       autoLoad={true}
       fields="name,email,picture"
       // onClick={componentClicked}
