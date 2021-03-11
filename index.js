@@ -8,7 +8,7 @@ const path = require('path')
 
 const app = express();
 
-const DB_URL = process.env.MONGODB_URI || 'mongodb://localhost:27017/firstDB';
+const DB_URL = 'mongodb://localhost:27017/firstDB';
 
 // let userSchema = mongoose.Schema({
 //   username: {
