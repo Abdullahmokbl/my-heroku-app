@@ -68,13 +68,14 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useC
   .catch((err) => console.log('db', err))
 
 app.get('/', (req, res, next) => {
-  User.find((err, users)=>{
-    console.log(users)
-    res.json(users)
-    // mongoose.disconnect()
-    // res.sendFile(__dirname + '\\index.html')
-  })
-  .catch(err){
+  try{
+    User.find((err, users)=>{
+      console.log(users)
+      res.json(users)
+      // mongoose.disconnect()
+      // res.sendFile(__dirname + '\\index.html')
+    })
+  }catch(err){
     console.log('aa', err)
   }
 })
@@ -170,12 +171,12 @@ process.on('uncaughtException', function (err) {
 if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
   // app.use(express.static('my-appp/build'))
-
-  app.get('*', (req, res) => {
-    res.send('aaaaaaa')
-    // res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
-  })
-  .catch(err){
+  try{
+    app.get('*', (req, res) => {
+      res.send('aaaaaaa')
+      // res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
+    })
+  }catch(err){
     console.log('rr', err)
   }
 }else{
