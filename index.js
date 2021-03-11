@@ -63,9 +63,9 @@ app.use(function (req, res, next) {
   next();
 });
 
-mongoose.connect(DB_URL, { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => console.log('connected to database'))
-  .catch(() => console.log(err))
+  .catch((err) => console.log('db', err))
 
 app.get('/', (req, res, next) => {
   User.find((err, users)=>{
@@ -74,6 +74,9 @@ app.get('/', (req, res, next) => {
     // mongoose.disconnect()
     // res.sendFile(__dirname + '\\index.html')
   })
+  .catch(err){
+    console.log('aa', err)
+  }
 })
 
 // app.get('/about', (req, res, next) => {
@@ -172,6 +175,9 @@ if(process.env.NODE_ENV === 'production'){
     res.send('aaaaaaa')
     // res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
   })
+  .catch(err){
+    console.log('rr', err)
+  }
 }else{
     res.send('aaaaaaasdaaa')
     console.log('bbbb')
