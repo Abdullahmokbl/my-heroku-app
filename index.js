@@ -169,11 +169,11 @@ if(process.env.NODE_ENV === 'production'){
   app.use(express.static(__dirname + '../my-appp/build'))
 
   app.get('*', (req, res) => {
-    req.send('aaaaaaa')
+    res.send('aaaaaaa')
     res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
   })
 }else{
-    req.send('aaaaaaasdaaa')
+    res.send('aaaaaaasdaaa')
     console.log('bbbb')
 }
 
