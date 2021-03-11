@@ -158,20 +158,23 @@ app.use('/auth',require('./middlewares/auth'))
 //   })
 // })
 console.log(process.env.NODE_ENV)
-console.log(process)
+// console.log(process)
 process.on('uncaughtException', function (err) {
   console.error('An uncaughhhht error occurred!');
   console.error(err.stack);
 });
+
 if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
-  app.use(express.static(__dirname + '/my-appp/build'))
+  app.use(express.static(__dirname + '../my-appp/build'))
 
   app.get('*', (req, res) => {
+    req.send('aaaaaaa')
     res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
   })
 }else{
-  console.log('bbbb')
+    req.send('aaaaaaa')
+    console.log('bbbb')
 }
 
 const port = process.env.PORT || 5000
