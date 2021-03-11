@@ -172,9 +172,11 @@ if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
   try{
     console.log('cvbbb')
+    console.log('x', express.static('my-appp/build'))
+    console.log('x', express.static(path.join('my-appp', 'build')))
     app.use(express.static('my-appp/build'))
   }catch(err){
-    console.log('dffd')
+    console.log('dffd', err)
   }
   try{
     app.get('*', (req, res) => {
