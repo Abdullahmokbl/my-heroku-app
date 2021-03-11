@@ -70,7 +70,7 @@ mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useC
 app.get('/', (req, res, next) => {
   try{
     User.find((err, users)=>{
-      console.log(users)
+      console.log('us', users)
       res.json(users)
       // mongoose.disconnect()
       // res.sendFile(__dirname + '\\index.html')
@@ -161,7 +161,7 @@ app.use('/auth',require('./middlewares/auth'))
 //     })
 //   })
 // })
-console.log(process.env.NODE_ENV)
+console.log('zz',process.env.NODE_ENV)
 // console.log(process)
 process.on('uncaughtException', function (err) {
   console.error('An uncaughhhht error occurred!');
@@ -170,17 +170,23 @@ process.on('uncaughtException', function (err) {
 
 if(process.env.NODE_ENV === 'production'){
   console.log('aaa')
-  // app.use(express.static('my-appp/build'))
+  try{
+    console.log('cvbbb')
+    app.use(express.static('my-appp/build'))
+  }catch(err){
+    console.log('dffd')
+  }
   try{
     app.get('*', (req, res) => {
-      res.send('aaaaaaa')
+      console.log('vvvvv')
+      // res.send('aaaaaaa')
       // res.sendFile(path.join(__dirname, 'my-appp', 'build', 'index.html'))
     })
   }catch(err){
     console.log('rr', err)
   }
 }else{
-    res.send('aaaaaaasdaaa')
+    // res.send('aaaaaaasdaaa')
     console.log('bbbb')
 }
 
