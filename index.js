@@ -63,7 +63,7 @@ app.use(function (req, res, next) {
   next();
 });
 
-mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+mongoose.connect(DB_URL, { useNewUrlParser: true, useCreateIndex: true })
   .then(() => console.log('connected to database'))
   .catch((err) => console.log('db', err))
 
