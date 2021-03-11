@@ -23,6 +23,21 @@ const Logout = ({log_out}) => {
     console.log(response);
   }
 
+  // FB.login(function(response) {
+  //   console.log(response);
+  // }, {scope: 'user_birthday'});
+
+  
+    // const f = {
+    //             status: 'connected',
+    //             authResponse: {
+    //                 accessToken: '...',
+    //                 expiresIn:'...',
+    //                 signedRequest:'...',
+    //                 userID:'...'
+    //             }
+    //           }
+
   return(
     // <Redirect to='/login' />
     <div>
