@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import { connect } from "react-redux";
 import { log_out } from "../../actions/types";
+import {Redirect} from 'react-router';
 
 const Logout = ({log_out}) => {
 
