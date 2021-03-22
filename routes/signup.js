@@ -4,6 +4,7 @@ const router = express.Router();
 // const bodyparser = require('body-parser');
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const config = require('config')
 
 // User model
 const User = require('../models/users')
@@ -40,7 +41,7 @@ router.post('/', (req, res, next) => {
           // res.json(result)
           jwt.sign(
             {id: newUser._id},
-            "myjwtsecret",
+            config.get('jwtSecret'),
             {expiresIn: 3600},
             (err, token) => {
               if(err) throw err;

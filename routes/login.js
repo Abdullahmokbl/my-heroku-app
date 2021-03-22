@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+const config = require('config')
 
 // User model
 const User = require('../models/users')
@@ -22,7 +23,7 @@ router.post('/', (req, res, next) => {
         if(!isMatch) return res.status(400).json({msg: "Invalid credentials"})
         jwt.sign(
           {id: user._id},
-          "myjwtsecret",
+          config.get('jwtSecret'),
           {expiresIn: 3600},
           (err, token) => {
             if(err) throw err;

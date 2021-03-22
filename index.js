@@ -1,11 +1,12 @@
 const express = require('express');
-const mongoose = require('mongoose')
-const path = require('path')
+const mongoose = require('mongoose');
+const path = require('path');
+const config = require('config');
 
 const app = express();
 
 // const DB_URL = 'mongodb://localhost:27017/firstDB';
-const DB_URL = process.env.MONGODB_URI || 'mongodb+srv://admin:admin123456@cluster0.gwtyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const DB_URL = process.env.MONGODB_URI || config.get('mongoURI');
 
 app.use(express.json());
 
