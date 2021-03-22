@@ -14,6 +14,12 @@ let userSchema = mongoose.Schema({
   password: {
     type: String,
     required: true
+  },
+  items: {
+    type: Array
+  },
+  cart: {
+    type: Array
   }
 })
 

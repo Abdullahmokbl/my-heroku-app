@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/users')
 
 router.post('/', (req, res, next) => {
-  const {username, email, password} = req.body
+  const {email, password} = req.body
   // simple validation
   if(!email || !password){
     return res.status(400).json({msg: "Please enter all fields"})

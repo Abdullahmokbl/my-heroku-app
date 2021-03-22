@@ -1,16 +1,31 @@
-import React from 'react';
+import React,{ Fragment } from 'react';
+import { connect } from "react-redux";
 import Navbar from "../../components/navbar/navbar";
-// import Header from "../header/header";
 import Items from "../items/items";
 import Footer from "../../components/footer/footer";
+import './home.css';
 
 
-export default function home() {
+const Home = () => {
   return (
-    <div>
+    <Fragment>
       <Navbar />
-      <Items />
+      <div className='navpd'>
+        <div className='hero'></div>
+        <h4 className='featured_products'>Featured Products</h4>
+        <div className='container'>
+          <Items />
+        </div>
+        <div className='bg'>
+          <p>shop here whatever you want</p>
+        </div>
+      </div>
       <Footer />
-    </div>
+    </Fragment>
   )
 }
+
+const mapStateToProps = state => {
+  return state;
+}
+export default connect(mapStateToProps)(Home);

@@ -2,6 +2,7 @@ const initState = {
   count: 5,
   loading: false,
   user: null,
+  cart: [],
   items: null,
   item: null,
   err: {
@@ -29,6 +30,11 @@ const reducer = (state = initState, action) => {
       ...state,
       item: action.item
     };
+  }else if(action.type === 'ADD_ITEM'){
+    return {
+      ...state,
+      item: action.item
+    };
   }else if(action.type === 'USER_LOADEING'){
     return {
       ...state,
@@ -44,18 +50,15 @@ const reducer = (state = initState, action) => {
     };
   }else if(action.type === 'REGISTER_SUCCESS' || action.type === 'LOGIN_SUCCESS'){
     localStorage.setItem('token', action.payload.data.token)
-    // console.log('aaaaaaa')
-    // console.log(action.payload)
-    // console.log(action.payload.token)
-    console.log(localStorage)
     return {
       ...state,
       isLoading: false,
       isAuthenticated: true,
-      user: action.payload.data.user
+      user: action.payload.data.user,
+      cart: action.payload.data.user.cart
     };
   }else if(action.type === 'AUTH_ERROR' || action.type === 'REGISTER_FAIL' || action.type === 'LOGIN_FAIL' || action.type === 'LOGOUT_SUCCESS'){
-    console.log('au er')
+    console.log('auth er')
     localStorage.removeItem('token')
     return {
       ...state,

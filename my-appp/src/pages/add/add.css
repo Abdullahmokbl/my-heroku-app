@@ -1,0 +1,57 @@
+.no_add{
+  display: block;
+  margin: 5em auto;
+  border: 1px solid black;
+  width: 18em;
+  padding: 1em;
+  cursor: pointer;
+}
+.no_add:hover{
+  background-color: black;
+  color: white;
+}
+.add_item{
+  margin: 5em auto;
+}
+.add_item h2{
+  font-weight: normal;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+  margin-bottom: 2em;
+}
+.add_item form{
+  width: 400px;
+  margin: 0 auto;
+}
+.add_item input{
+  display: block;
+  width: 100%;
+  padding: 1em;
+  border: 1px solid black;
+  margin-bottom: 2em;
+  /* background-color: burlywood; */
+}
+.add_item input[type='file']{
+  opacity: 0;
+}
+.add_item form div{
+  position: relative;
+}
+.add_item form div label{
+  position: absolute;
+  width: 100%;
+  /* background: red; */
+  border: 1px solid black;
+  left: 0;
+  height: 100%;
+  z-index: 0;
+  padding: 10px;
+  color: rgba(0,0,0,.6);
+}
+.add_item input[type='file']{
+  cursor: pointer;
+}
+.add_item input[type='submit']{
+  background-color: skyblue;
+  cursor: pointer;
+}

@@ -4,8 +4,8 @@ const path = require('path')
 
 const app = express();
 
-// const DB_URL = 'mongodb://localhost:27017/firstDB';
-const DB_URL = process.env.MONGODB_URI || 'mongodb+srv://admin:admin123456@cluster0.gwtyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
+const DB_URL = 'mongodb://localhost:27017/firstDB';
+// const DB_URL = process.env.MONGODB_URI || 'mongodb+srv://admin:admin123456@cluster0.gwtyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
 
 app.use(express.json());
 
@@ -29,21 +29,18 @@ app.use(function (req, res, next) {
   next();
 });
 
-mongoose.connect(DB_URL, { useNewUrlParser: true, useCreateIndex: true })
+mongoose.connect(DB_URL, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => console.log('connected to database'))
   .catch((err) => console.log(err))
+
+app.use('/uploads', express.static('uploads'))
+
 
 app.use('/signup',require('./routes/signup'))
 app.use('/login',require('./routes/login'))
 app.use('/items',require('./routes/items'))
 app.use('/user',require('./routes/user'))
 app.use('/auth',require('./middlewares/auth'))
-
-
-// process.on('uncaughtException', function (err) {
-//   console.error('An uncaughhhht error occurred!');
-//   console.error(err.stack);
-// });
 
 if(process.env.NODE_ENV === 'production'){
   try{

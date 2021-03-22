@@ -5,6 +5,17 @@ let itemSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  price: {
+    type: Number,
+    required: true
+  },
+  img: {
+    type: String,
+    required: true
+  },
+  info: {
+    type: String
+  },
   description: {
     type: String
   }

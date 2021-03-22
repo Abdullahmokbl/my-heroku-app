@@ -1,0 +1,17 @@
+.profile{
+  margin: 5em 0 10em;
+}
+.profile h2{
+  font-weight: normal;
+  font-size: 2.5em;
+  letter-spacing: 1px;
+  margin-bottom: 2em;
+}
+.profile h3{
+  font-weight: normal;
+  letter-spacing: 1px;
+  font-size: 1.57143em;
+}
+.profile p{
+  line-height: 1.6;
+}

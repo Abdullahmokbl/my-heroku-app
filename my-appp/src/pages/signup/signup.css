@@ -9,22 +9,24 @@
 .signup label,
 .signup input{
   display: block;
-  width: 200px;
+  width: 100%;
+  height: 2.8em;
   padding: 5px;
   margin-bottom: 10px;
   border-radius: 5px
 }
-/* .login input['submit']{
+.signup input[type='submit']{
+  margin-bottom: 30px;
   background-color: skyblue;
   cursor: pointer
-} */
-.err{
+}
+.signup .err{
   text-align: center;
   margin-bottom: 20px;
   color: red;
 }
 .auth{
-  width: 200px;
+  width: 254px;
   margin-left: 40%;
   margin-bottom: 20px;
   padding: 10px;
@@ -32,4 +34,7 @@
   background-color: skyblue;
   border-radius: 5px;
   cursor: pointer
+}
+.auth a{
+  display: block;
 }

@@ -1,8 +1,26 @@
+*{
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: capitalize;
+}
 .App {
   /* text-align: center; */
-  background-color: rgb(171 161 161)
+  /* background-color: rgb(171 161 161) */
+  background-color: #fff;
+  /* background-image: url(a.jpg);
+  background-attachment: fixed;
+  background-position: center; */
 }
-
+/* .bg{
+  width: 100%;
+  height: 100%;
+  background-image: url(a.jpg);
+  background-attachment: fixed;
+  background-position: center;
+} */
+.navpd{
+  padding-top: 50px;
+}
 .container{
   width: 70%;
   height: 100%;
@@ -11,7 +29,7 @@
 
 a{
   text-decoration: none;
-  color: white
+  /* color: white */
 }
 .loading{
   height: 100em

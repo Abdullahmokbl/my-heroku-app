@@ -4,12 +4,10 @@ import { Link, NavLink } from "react-router-dom";
 import "./navbar.css";
 
 const Navbar = ({user}) => {
-  // console.log(user, 'll')
-  // const logged = return(<Link to='/profile'>name</Link>)
   const logged = () => {
     return(
       <Fragment>
-        <Link to='/profile'>name</Link>
+        <Link to='/profile'>{user.username}</Link>
         <Link to='/logout'>Logout</Link>
       </Fragment>
     )
@@ -27,23 +25,18 @@ const Navbar = ({user}) => {
       <div className='container'>
         <ul>
           <NavLink exact to='/'>Home</NavLink>
-          <NavLink to='/it'>Categories</NavLink>
-          <NavLink to='/items'>Items</NavLink>
+          <NavLink exact to='/add'>Add Item</NavLink>
+          <NavLink to='/categories'>Categories</NavLink>
+          <NavLink to='/cart'>Cart</NavLink>
           <NavLink to='/contact'>Contact Us</NavLink>
         </ul>
         <form>
           <input className='search' type='search' placeholder='Search' />
         </form>
-        {/* <div className='name'>name</div> */}
         <ul>
           {user? logged():notLogged()}
-          {/* <Link to='/profile'>name</Link>
-          <Link to='/signup'>Sign up</Link>
-          <Link to='/login'>Log in </Link>
-          <Link to='/logout'>Logout</Link> */}
         </ul>
       </div>
-      
     </div>
   )
 }

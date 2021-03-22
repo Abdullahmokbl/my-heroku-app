@@ -1,6 +1,44 @@
 footer{
-  background-color: gray;
-  padding: 20px;
+  /* background-color: gray; */
+  /* padding: 20px; */
   /* width: 100%;
   position: fixed */
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 20px;
 }
+footer .c_care,
+footer .about,
+footer .newsletter{
+  width: 400px;
+  padding-left: 20px;
+}
+footer h5,
+footer li{
+  text-align: initial;
+  font-weight: normal;
+  font-size: 1em;
+}
+footer ul{
+  list-style: none;
+  padding: 0;
+}
+footer li{
+  margin-bottom: 5px;
+}
+footer li a{
+  color: black;
+}
+footer form input{
+  border: none;
+  height: 40px;
+  background-color: #f3f1f1;
+}
+footer form input[type='submit']{
+  background-color: black;
+  color: white;
+  width: 150px;
+}
+/* footer form input:active{
+  border: none;
+} */

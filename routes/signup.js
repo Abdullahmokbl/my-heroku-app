@@ -21,10 +21,14 @@ router.post('/', (req, res, next) => {
   // check for existing user
   User.findOne({email}, (err, user)=>{
     if(user) return res.status(400).json({msg: "User already exists"})
+    const items = [];
+    const cart = [];
     let newUser = new User({
       username,
       email,
-      password
+      password,
+      items,
+      cart
     })
     // create salt & hash
     bcrypt.genSalt(10, (err, salt)=>{
@@ -45,7 +49,9 @@ router.post('/', (req, res, next) => {
                 user: {
                   id: user.id,
                   username: user.username,
-                  email: user.email
+                  email: user.email,
+                  items: user.items,
+                  cart: user.cart
                 }
               })
             }

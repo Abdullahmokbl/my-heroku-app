@@ -1,0 +1,30 @@
+.hero{
+  /* background-color: red; */
+  background-image: url(a.jpg);
+  height: 28em;
+  background-size: cover;
+  background-position-y: center;
+}
+.featured_products{
+  text-align: center;
+  font-size: 3em;
+  line-height: 1em;
+  font-weight: normal;
+  letter-spacing: 1px;
+}
+.bg{
+  width: 100%;
+  height: 400px;
+  background-image: url(b.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bg p{
+  font-size: 2.42857em;
+  color: white;
+  font-weight: normal;
+  letter-spacing: 3px;
+}

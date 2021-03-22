@@ -2,10 +2,11 @@ import React, {useState} from 'react';
 import { Redirect } from 'react-router';
 import { connect } from "react-redux";
 import { log_in, load_user } from "../../actions/types";
-import './login.css'
+import './login.css';
 
-const Login = ({log_in, err}) => {
-
+const Login = (props) => {
+  console.log(props.history)
+  const {log_in, err} = props
   const [user, setUser] = useState({
     email: '',
     password: ''
@@ -17,31 +18,23 @@ const Login = ({log_in, err}) => {
     })
   }
   const form = (e) => {
-    console.log(user)
     e.preventDefault()
     log_in(user)
     return(
       <Redirect to='/' />
     )
   }
-  // const form = (e) => {
-  //   e.preventDefault()
-  //   log_in()
-  // }
-
   return (
     <div className='login'>
-      <form method='POST'>
-        {/* <label>Email</label> */}
-        <input type='text' name='email' placeholder='email' onChange={(e)=> click(e)} />
-        {/* <label>Password</label> */}
-        <input type='password' name='password' placeholder='password' onChange={(e)=> click(e)} />
-        <button onClick={(e)=> form(e)}>login</button>
-        {/* <input type='submit' value='signup' /> */}
+      <form method='POST' onSubmit={(e)=>form(e)}>
+        <input type='text' name='email' placeholder='email' onChange={(e)=> click(e)} required />
+        <input type='password' name='password' placeholder='password' onChange={(e)=> click(e)} required />
+        <input type='submit' value='login' />
       </form>
-      {err.id == 'LOGIN_FAIL'? <div className='err'>{err.msg.msg}</div>:null}
+      {err.id === 'LOGIN_FAIL'? <div className='err'>{err.msg.msg}</div>:null}
       <div className='auth'>Login with Google</div>
       <div className='auth'>Login with Facebook</div>
+      <div className='auth'><a href='/signup'>Register</a></div>
     </div>
   )
 }

@@ -2,11 +2,9 @@ import React, {useState} from 'react';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router';
 import { sign_up } from "../../actions/types";
-// import {BrowserRouter, Route, Redirect} from 'react-router-dom';
 import './signup.css'
 
 const Signup = ({sign_up, err}) => {
-  // console.log(err.msg)
   const [user, setUser] = useState({
     username: '',
     email: '',
@@ -19,7 +17,6 @@ const Signup = ({sign_up, err}) => {
     })
   }
   const form = (e) => {
-    console.log(user)
     e.preventDefault()
     sign_up(user)
     return(
@@ -29,16 +26,15 @@ const Signup = ({sign_up, err}) => {
   return (
     <div className='signup'>
       <form method='POST' onSubmit={(e)=> form(e)}>
-        <input type='text' id='username' name='username' placeholder='Username' onChange={(e)=> click(e)} />
-        {/* <label>Email</label> */}
-        <input type='text' name='email' placeholder='email' onChange={(e)=> click(e)} />
-        {/* <label>Password</label> */}
-        <input type='password' name='password' placeholder='password' onChange={(e)=> click(e)} />
+        <input type='text' id='username' name='username' placeholder='Username' onChange={(e)=> click(e)} required />
+        <input type='text' name='email' placeholder='email' onChange={(e)=> click(e)} required />
+        <input type='password' name='password' placeholder='password' onChange={(e)=> click(e)} required />
         <input type='submit' value='signup' />
       </form>
-      {err.id == 'REGISTER_FAIL'? <div className='err'>{err.msg.msg}</div>:null}
-      <div className='auth'>Sign up with Google</div>
-      <div className='auth'>Sign up with Facebook</div>
+      {err.id === 'REGISTER_FAIL'? <div className='err'>{err.msg.msg}</div>:null}
+      <div className='auth'>Sign in with Google</div>
+      <div className='auth'>Sign in with Facebook</div>
+      <div className='auth'><a href='/login'>Login</a></div>
     </div>
   )
 }
