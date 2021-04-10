@@ -1,12 +1,10 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router';
 import { connect } from "react-redux";
-import { log_in, load_user } from "../../actions/types";
+import { log_in, load_user } from "../../actions/users";
 import './login.css';
 
-const Login = (props) => {
-  console.log(props.history)
-  const {log_in, err} = props
+const Login = ({log_in, err}) => {
   const [user, setUser] = useState({
     email: '',
     password: ''

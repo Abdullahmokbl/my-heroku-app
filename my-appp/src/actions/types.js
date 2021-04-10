@@ -1,19 +1,12 @@
 import axios from 'axios';
 
-export const add = () => {
-  console.log('sd')
-  return {
-    type: 'ADD'
-  }
-}
-
 export const return_errors = (msg, status, id=null) => {
-  console.log('sdd')
   return {
     type: 'GET_ERRORS',
     payload: {msg, status, id}
   }
 }
+
 export const clear_errors = () => {
   return {
     type: 'CLEAR_ERRORS'
@@ -46,17 +39,14 @@ export const load_user = () => (dispatch, getState) => {
       })
     })
     .catch(err=>{
-      console.log(err)
       dispatch(return_errors(err.response.data, err.response.status))
       dispatch({
         type: 'AUTH_ERROR'
       })
     })
-
 }
 
 export const sign_up = (user) => dispatch => {
-  // console.log('t', user)
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
@@ -147,33 +137,8 @@ export const get_item = (id) => dispatch => {
   )
   .catch(err=> console.log(err))
 }
-// export const add_img = img => dispatch => {
-//   console.log('imgtttttttt')
-//   let axiosConfig = {
-//     headers: {
-//       // 'Content-Type': 'application/json;charset=UTF-8',
-//       'Content-Type': 'multipart/form-data;',
-//       'Access-Control-Allow-Origin': "*",
-//       }
-//   };
-//   // axios.post('http://localhost:5000/items/img', img, axiosConfig)
-//   // console.log('tttttrff')
-//   axios.post('http://localhost:5000/items/img', img, axiosConfig)
-//   .then(res=>
-//     dispatch({
-//       type: 'ADD_IMG',
-//       item: res
-//     })
-//   )
-//   .catch(err=>{
-//     dispatch(return_errors(err.response.data, err.response.status, 'ADD_IMG_FAIL'))
-//     dispatch({
-//       type: 'ADD_IMG_FAIL'
-//     })
-//   })
-// }
+
 export const add_item = item => dispatch => {
-  // console.log('m',...item)
   let axiosConfig = {
     headers: {
       // 'Content-Type': 'application/json;charset=UTF-8',
@@ -181,8 +146,6 @@ export const add_item = item => dispatch => {
       'Access-Control-Allow-Origin': "*",
       }
   };
-  // axios.post('http://localhost:5000/items/img', img, axiosConfig)
-  // console.log('tttttrff')
   axios.post('http://localhost:5000/items', item, axiosConfig)
   .then(res=>
     dispatch({
@@ -199,7 +162,6 @@ export const add_item = item => dispatch => {
 }
 
 export const add_to_cart = (user_id, cart) => dispatch => {
-  console.log('mf')
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
@@ -221,7 +183,6 @@ export const add_to_cart = (user_id, cart) => dispatch => {
   })
 }
 export const del_cart = (user_id, cart) => dispatch => {
-  console.log('del_cart')
   let axiosConfig = {
     headers: {
       'Content-Type': 'application/json;charset=UTF-8',
@@ -232,13 +193,81 @@ export const del_cart = (user_id, cart) => dispatch => {
   .then(res=>
     dispatch({
       type: 'DEL_CART',
-      item: res
+      cart: cart
     })
   )
   .catch(err=>{
     dispatch(return_errors(err.response.data, err.response.status, 'DEL_CART_FAIL'))
     dispatch({
       type: 'DEL_CART_FAIL'
+    })
+  })
+}
+export const del_all_cart = (user_id) => dispatch => {
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': "*",
+      }
+  };
+  axios.post('http://localhost:5000/user/cart/delAll',{user_id} , axiosConfig)
+  .then(res=>
+    dispatch({
+      type: 'DEL_ALL_CART'
+    })
+  )
+  .catch(err=>{
+    dispatch(return_errors(err.response.data, err.response.status, 'DEL_ALL_CART_FAIL'))
+    dispatch({
+      type: 'DEL_ALL_CART_FAIL'
+    })
+  })
+}
+
+export const search_item = (item) => dispatch => {
+  if (!item || item === ''){
+    dispatch({type: 'SEARCH_ITEM_FAIL'})
+    return;
+  }
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': "*",
+      }
+  };
+  axios.post('http://localhost:5000/items/search',{item} , axiosConfig)
+  .then(res=>
+    dispatch({
+      type: 'SEARCH_ITEM',
+      items: res.data
+    })
+  )
+  .catch(err=>{
+    dispatch(return_errors(err.response.data, err.response.status, 'SEARCH_ITEM_FAIL'))
+    dispatch({
+      type: 'SEARCH_ITEM_FAIL'
+    })
+  })
+}
+
+export const send_mail = () => dispatch => {
+  let axiosConfig = {
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8',
+      'Access-Control-Allow-Origin': "*",
+      }
+  };
+  axios.post('http://localhost:5000/user/mail', axiosConfig)
+  .then(res=>
+    dispatch({
+      type: 'SEND_MAIL',
+      payload: res
+    })
+  )
+  .catch(err=>{
+    dispatch(return_errors(err.response.data, err.response.status, 'SEND_MAIL_FAIL'))
+    dispatch({
+      type: 'SEND_MAIL_FAIL'
     })
   })
 }

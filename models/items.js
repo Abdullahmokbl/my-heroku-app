@@ -18,7 +18,10 @@ let itemSchema = mongoose.Schema({
   },
   description: {
     type: String
+  },
+  seller: {
+    type: Object
   }
 })
 
-module.exports = Item = mongoose.model('item', itemSchema) // collection users
+module.exports = Item = mongoose.model('item', itemSchema) // collection items

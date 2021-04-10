@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { connect } from "react-redux";
 import {BrowserRouter, Route, Redirect} from 'react-router-dom';
-import './App.css';
 import Home from "./pages/home/home";
 import Add from "./pages/add/add";
 import Categories from "./pages/categories/categories";
@@ -15,14 +14,20 @@ import Login from "./pages/login/login";
 import Signup from "./pages/signup/signup";
 import Profile from "./pages/profile/profile";
 import Logout from "./pages/logout/logout";
-import { get_items, load_user } from "./actions/types";
+import Seller from "./pages/seller/seller";
+import { load_user } from "./actions/users";
+import { get_items } from "./actions/items";
+import './App.css';
 
 function App(props) {
-  const { isAuthenticated, get_items, load_user} = props
+  const { isAuthenticated, get_items, load_user, isLoading} = props
   useEffect(()=>{
     load_user()
     get_items()
   },[])
+  console.log(isAuthenticated)
+  if(isLoading) return (<div>Loading....</div>)
+  console.log(isAuthenticated)
   return (
     <BrowserRouter>
       <div className="App">
@@ -34,7 +39,9 @@ function App(props) {
           {isAuthenticated ? <Redirect to="/" /> : <Signup />}
         </Route>
         <Route path='/logout' component={Logout} />
-        <Route path='/profile' component={Profile} />
+        <Route path="/profile">
+          {!isAuthenticated ? <Redirect to="/" /> : <Profile />}
+        </Route>
         <Route path='/add' component={Add} />
         <Route path='/categories' component={Categories} />
         <Route path='/item/:id' component={Item} />
@@ -43,6 +50,7 @@ function App(props) {
         <Route path='/faqs' component={Faqs} />
         <Route path='/terms' component={Terms} />
         <Route path='/policy' component={Policy} />
+        <Route path='/seller' component={Seller} />
       </div>
     </BrowserRouter>
   );

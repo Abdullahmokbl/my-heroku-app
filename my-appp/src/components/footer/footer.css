@@ -1,8 +1,4 @@
 footer{
-  /* background-color: gray; */
-  /* padding: 20px; */
-  /* width: 100%;
-  position: fixed */
   display: flex;
   flex-wrap: wrap;
   padding: 0 20px;
@@ -38,7 +34,8 @@ footer form input[type='submit']{
   background-color: black;
   color: white;
   width: 150px;
+  cursor: pointer;
 }
-/* footer form input:active{
-  border: none;
-} */
+footer .msg{
+  color: red
+}

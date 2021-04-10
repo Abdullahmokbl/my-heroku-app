@@ -1,0 +1,18 @@
+.cart .item div:not(:first-of-type){
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.item .number .span{
+  background-color: #d2cc14;
+  border-radius: 50%;
+  display: inline-block;
+  width: 2em;
+  height: 2em;
+  line-height: 1.7;
+  font-weight: bold;
+  cursor: pointer;
+}
+.cart .del{
+  cursor: pointer;
+}

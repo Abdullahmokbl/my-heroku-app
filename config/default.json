@@ -1,4 +1,6 @@
 {
-  "mongoURI" : "mongodb+srv://admin:admin123456@cluster0.gwtyo.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-  "jwtSecret": "MYJWTSECRET"
+  "mongoURI" : "mongodb+srv://abdullahmokbl:Wkdz80GBJ5PmbwE9@cluster0.zmc0r.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  "jwtSecret": "MYJWTSECRET",
+  "emailUsername": "abdullahmokbl0@gmail.com",
+  "emailPassword": "iojvqcnskcrgfxec"
 }

@@ -1,10 +1,12 @@
 const initState = {
   count: 5,
-  loading: false,
   user: null,
   cart: [],
+  totalPrice: 0,
   items: null,
   item: null,
+  search_items: [],
+  userItems: [],
   err: {
     msg: {msg:null},
     status: null,
@@ -12,15 +14,12 @@ const initState = {
   },
   token: localStorage.getItem('token'),
   isAuthenticated: false,
-  isLoading: false
+  isLoading: false,
+  mail_msg: null
 }
 
 const reducer = (state = initState, action) => {
-  if(action.type === 'ADD'){
-    return {
-      count: state.count + 2
-    };
-  }else if(action.type === 'GET_ITEMS'){
+  if(action.type === 'GET_ITEMS'){
     return {
       ...state,
       items: action.items
@@ -35,7 +34,8 @@ const reducer = (state = initState, action) => {
       ...state,
       item: action.item
     };
-  }else if(action.type === 'USER_LOADEING'){
+  }else if(action.type === 'USER_LOADING'){
+    console.log('loading')
     return {
       ...state,
       isLoading: true
@@ -46,16 +46,17 @@ const reducer = (state = initState, action) => {
       ...state,
       isLoading: false,
       isAuthenticated: true,
-      user: action.payload
+      user: action.user,
+      cart: action.user.cart
     };
   }else if(action.type === 'REGISTER_SUCCESS' || action.type === 'LOGIN_SUCCESS'){
-    localStorage.setItem('token', action.payload.data.token)
+    localStorage.setItem('token', action.user.token)
     return {
       ...state,
       isLoading: false,
       isAuthenticated: true,
-      user: action.payload.data.user,
-      cart: action.payload.data.user.cart
+      user: action.user.user,
+      cart: action.user.user.cart
     };
   }else if(action.type === 'AUTH_ERROR' || action.type === 'REGISTER_FAIL' || action.type === 'LOGIN_FAIL' || action.type === 'LOGOUT_SUCCESS'){
     console.log('auth er')
@@ -65,7 +66,43 @@ const reducer = (state = initState, action) => {
       token: null,
       user: null,
       isAuthenticated: false,
-      isLoading: false
+      isLoading: false,
+      cart: []
+    };
+  }else if(action.type === 'DEL_CART'){
+    return {
+      ...state,
+      cart: state.cart.filter(i=> i.id!==action.cart)
+    };
+  }else if(action.type === 'DEL_ALL_CART'){
+    return {
+      ...state,
+      cart: []
+    };
+  }else if(action.type === 'SEARCH_ITEM'){
+    return {
+      ...state,
+      search_items: action.items
+    };
+  }else if(action.type === 'SEARCH_ITEM_FAIL'){
+    return {
+      ...state,
+      search_items: []
+    };
+  }else if(action.type === 'GET_USER_ITEM_SUCCESS'){
+    return {
+      ...state,
+      userItems: action.items
+    };
+  }else if(action.type === 'GET_SELLER_SUCCESS'){
+    return {
+      ...state,
+      seller: action.seller
+    };
+  }else if(action.type === 'SEND_MAIL'){
+    return {
+      ...state,
+      mail_msg: action.msg
     };
   }else if(action.type === 'GET_ERRORS'){
     return {

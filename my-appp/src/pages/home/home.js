@@ -17,7 +17,7 @@ const Home = () => {
           <Items />
         </div>
         <div className='bg'>
-          <p>shop here whatever you want</p>
+          <p>Shop Here Whatever You Want</p>
         </div>
       </div>
       <Footer />

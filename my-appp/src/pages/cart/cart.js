@@ -1,46 +1,41 @@
-import React, {Fragment, useState} from 'react';
+import React, {Fragment} from 'react';
 import { connect } from "react-redux";
-import './cart.css'
+import {NavLink} from 'react-router-dom';
+import {del_cart, del_all_cart} from '../../actions/carts';
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
-import {del_cart} from '../../actions/types';
-import { Redirect } from 'react-router';
+import MyCart from '../../components/cart/cart';
+import { AiFillDelete } from 'react-icons/ai';
+import './cart.css';
 
-const Cart = ({user, items, del_cart}) => {
-  let emptycart = [];
-  if(user)   {
-    emptycart = [...user.cart]
-  };
-  const [total, setTotal] = useState(null)
-  const change = e => {
-    setTotal(e.target.value)
-  }
-  const del = id => {
-    del_cart(user._id, id)
-    return(
-      <Redirect to='/cart' />
-    )
-  }
+const Cart = ({user, items, del_all_cart, cart, totalPrice}) => {
+  console.log('d',cart)
+  let t_price = 0
   const buy = () => {
     console.log('buy')
     // buy_()
   }
 
-  if(emptycart.length === 0){
+  const del_all = () => {
+    console.log('del all')
+    del_all_cart(user._id)
+  }
+  // if(!items) return(<div>Loading</div>)
+  if(cart.length === 0 || !items){
     return(
       <Fragment>
         <Navbar />
-      <div className='container navpd'>
-        <div className='cart'>
-          <h2>Your Cart</h2>
-          <div className='empty'>
-            <h3>
-              Your cart is empty.
-            </h3>
-            <a href='/' className='add'>Continue browsing here</a>
+        <div className='container navpd'>
+          <div className='cart'>
+            <h2>Your Cart</h2>
+            <div className='empty'>
+              <h3>
+                Your cart is empty.
+              </h3>
+              <NavLink to='/' className='add'>Continue browsing here</NavLink>            </div>
           </div>
         </div>
-      </div>
+        <Footer />
       </Fragment>
     )
   }
@@ -58,22 +53,25 @@ const Cart = ({user, items, del_cart}) => {
               <div>total price</div>
               <div>delete</div>
             </div>
-            {emptycart.map(item=> {
-              const i = items.filter(i=> i._id===item)
-              const hr = '/item/'+i[0]._id
-              let t = 1;
+            {cart.map(item=> {
+              const i = items.filter(i=> i._id===item.id);
+              console.log(item.q)
+              const hr = '/item/'+i[0]._id;
+              t_price += i[0].price;
+              console.log(i)
               return(
-                <div className='item'>
-                  <div><a href={hr}>{i[0].name}</a></div>
-                  <div><input type='number' defaultValue='1' min='1' onChange={(e)=>change(e)} /></div>
-                  <div>${i[0].price}</div>
-                  <div><input type='text' name='total' defaultValue={'$'+t*i[0].price} disabled /></div>
-                  <div className='del' onClick={()=>del(i[0]._id)}>del icon</div>
-                </div>
+                <MyCart quantity={item.q} key={i[0]._id} hr={hr} id={i[0]._id} name={i[0].name} price={i[0].price} change={onchange}  />
               )
             })}
           </div>
-          <div className='buy' onClick={()=>buy()}>Buy</div>
+          <div className='total_price'>Total Price : ${totalPrice? totalPrice:t_price}</div>
+          <div className='bd'>
+            <div className='buy' onClick={()=>buy()}>Buy</div>
+            <div className='buy' onClick={()=>del_all()}>
+              <AiFillDelete className='del' size={30} color='red' />
+              Delete All
+            </div>
+          </div>
         </div>
       </div>
       <Footer />
@@ -84,4 +82,4 @@ const Cart = ({user, items, del_cart}) => {
 const mapStateToProps = (state) => {
   return state
 }
-export default connect(mapStateToProps, {del_cart})(Cart);
+export default connect(mapStateToProps, {del_cart, del_all_cart})(Cart);

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { connect } from "react-redux";
 import { Redirect } from 'react-router';
-import { sign_up } from "../../actions/types";
+import { sign_up } from "../../actions/users";
 import './signup.css'
 
 const Signup = ({sign_up, err}) => {

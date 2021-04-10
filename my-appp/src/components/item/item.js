@@ -8,9 +8,9 @@ export default function item(props) {
   return (
     <div className='div'>
       <a href={hr} className='w'>
-        <a className='a'>
+        <div className='a'>
           <img src={imgUrl} alt='img' />
-        </a>
+        </div>
       </a>
       <div>
         <p>

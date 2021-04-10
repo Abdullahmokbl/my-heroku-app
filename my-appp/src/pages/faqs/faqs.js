@@ -1,7 +1,5 @@
 import React from 'react'
 import Navbar from "../../components/navbar/navbar";
-// import Header from "../header/header";
-// import Items from "../items/items";
 import Footer from "../../components/footer/footer";
 import './faqs.css';
 

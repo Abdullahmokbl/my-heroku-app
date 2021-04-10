@@ -29,7 +29,6 @@
   padding: 1em;
   border: 1px solid black;
   margin-bottom: 2em;
-  /* background-color: burlywood; */
 }
 .add_item input[type='file']{
   opacity: 0;
@@ -40,7 +39,6 @@
 .add_item form div label{
   position: absolute;
   width: 100%;
-  /* background: red; */
   border: 1px solid black;
   left: 0;
   height: 100%;

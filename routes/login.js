@@ -7,7 +7,7 @@ const config = require('config')
 // User model
 const User = require('../models/users')
 
-router.post('/', (req, res, next) => {
+router.post('/', (req, res) => {
   const {email, password} = req.body
   // simple validation
   if(!email || !password){
@@ -32,7 +32,9 @@ router.post('/', (req, res, next) => {
               user: {
                 id: user.id,
                 username: user.username,
-                email: user.email
+                email: user.email,
+                items: user.items,
+                cart: user.cart
               }
             })
           }

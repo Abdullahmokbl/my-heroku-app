@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { get_items } from "../../actions/types";
+import { get_items } from "../../actions/items";
 import Item from '../../components/item/item';
 import './items.css'
 
